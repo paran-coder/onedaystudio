@@ -163,7 +163,8 @@
   function workRow(w, i) {
     const items = S.works.items;
     const li = h("li", { class: "row" + (w.hidden ? " is-hidden" : "") });
-    const titleEl = h("span", { class: "row__title", text: w.title || "(제목 없음)" });
+    const oneLine = (s) => String(s || "").replace(/\s*\n\s*/g, " · ").trim() || "(제목 없음)";
+    const titleEl = h("span", { class: "row__title", text: oneLine(w.title) });
 
     const handle = h("span", { class: "row__handle", draggable: "true", title: "끌어서 순서 바꾸기", text: "⠿" });
     handle.addEventListener("dragstart", (e) => {
@@ -238,7 +239,6 @@
             ...extra,
             oninput: (e) => {
               w[key] = e.target.value;
-              if (key === "title") titleEl.textContent = e.target.value || "(제목 없음)";
               markDirty();
             },
           }),
@@ -247,7 +247,21 @@
         h(
           "div",
           { class: "row__form" },
-          text("title", "제목", { maxlength: "120" }),
+          field(
+            "제목 (줄바꿈으로 '회사명'과 '작업명'을 나눠요)",
+            h("textarea", {
+              rows: "2",
+              maxlength: "120",
+              placeholder: "회사명\n작업명",
+              value: w.title || "",
+              oninput: (e) => {
+                w.title = e.target.value;
+                titleEl.textContent = oneLine(w.title);
+                markDirty();
+              },
+            }),
+            true,
+          ),
           text("category", "구분 (예: 홈페이지, PPT)", { maxlength: "40" }),
           field(
             "목록에 보이는 한 줄 설명",

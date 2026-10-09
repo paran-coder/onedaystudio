@@ -59,7 +59,7 @@
         wrap.replaceChildren(el("span", null, w.category));
       });
       im.src = img;
-      im.alt = w.title;
+      im.alt = w.title.replace(/\n/g, " ");
       im.loading = "lazy";
       wrap.appendChild(im);
       item.appendChild(wrap);
@@ -96,7 +96,7 @@
           s.replaceChildren(el("span", "slide__label", `${w.category} ${pad(n, 2)}`));
         });
         im.src = imgs[n];
-        im.alt = `${w.title} ${n + 1}`;
+        im.alt = `${w.title.replace(/\n/g, " ")} ${n + 1}`;
         im.draggable = false;
         s.appendChild(im);
       } else {
