@@ -269,14 +269,6 @@
     list.appendChild(a);
   });
 
-  const cta = document.getElementById("contact-cta");
-  if (channels.length) {
-    cta.href = channels[0].href;
-    cta.textContent = S.contact.cta;
-  } else {
-    cta.remove();
-  }
-
   /* ---------- 움직임 효과 ---------- */
   const track = document.getElementById("marquee-track");
   const words = S.marquee || [];
