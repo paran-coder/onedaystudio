@@ -235,6 +235,13 @@
     points.appendChild(cell);
   });
 
+  const steps = document.getElementById("contact-steps");
+  (S.contact.steps || []).forEach((s, i) => {
+    const cell = el("div", "cell");
+    cell.append(el("span", "cell__index", pad(i, 2)), el("h3", null, s.title), el("p", null, s.body));
+    steps.appendChild(cell);
+  });
+
   const channels = S.contact.channels.filter((c) => c.value && safeUrl(c.href));
   const list = document.getElementById("contact-channels");
   channels.forEach((c, i) => {

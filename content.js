@@ -18,6 +18,7 @@ window.SITE = {
   about: {
     label: "APPROACH",
     title: "이렇게 일합니다",
+    guide: "맡기려는 작업이 아래 세 가지 중 어디에 가까운지 먼저 확인해 보세요. 해당하는 게 있다면 바로 '의뢰하기'로 넘어가시면 됩니다.",
     points: [
       { title: "홈페이지 디자인", body: "회사 소개, 서비스 랜딩, 채용 페이지까지. 기획 단계부터 함께 정리합니다." },
       { title: "PPT · 발표 자료", body: "IR, 제안서, 회사 소개서. 내용 구조를 먼저 잡고 디자인을 입힙니다." },
@@ -29,6 +30,8 @@ window.SITE = {
     label: "WORKS",
     title: "작업물",
     description: "홈페이지와 발표 자료 6건. 클릭하면 화면을 넘겨보며 자세히 볼 수 있어요.",
+    // 메뉴 안내 문구 — 방문자에게 이 메뉴에서 뭘 하면 되는지 알려줍니다.
+    guide: "작업물을 누르면 팝업이 열려요. 화살표 키(← →)나 좌우 스와이프로 이미지를 넘기고, 상단의 이전·다음으로 다른 작업을 이어서 볼 수 있어요. 닫을 때는 ESC.",
     // 작업물을 클릭하면 팝업이 열립니다. 칸을 비워두면 그 줄은 팝업에서 사라집니다.
     //   title / category / description : 목록에 보이는 글자
     //   image   : 목록 오른쪽에 보이는 작은 이미지 (사이트 안 이미지는 /images/파일명, 외부 이미지는 https:// 주소)
@@ -83,11 +86,21 @@ window.SITE = {
     // 큰 검정 버튼. 첫 번째 연락 수단으로 연결됩니다.
     cta: "의뢰 메일 보내기",
     description: "어떤 작업인지, 언제까지 필요한지 짧게 남겨주시면 하루 안에 답장드립니다.",
+    guide: "아래 세 가지만 적어 보내주시면 가장 빠르게 견적과 일정을 안내드릴 수 있어요. 자료가 정리되지 않았어도 괜찮아요.",
+    stepsTitle: "의뢰는 이렇게 진행돼요",
+    steps: [
+      { title: "작업 내용 보내기", body: "홈페이지인지 PPT인지, 분량과 용도를 알려주세요. 참고하고 싶은 사이트나 자료 링크가 있으면 함께요." },
+      { title: "견적·일정 안내", body: "내용을 확인한 뒤 영업일 기준 하루 안에 견적과 작업 일정을 회신드립니다." },
+      { title: "시안 → 수정 → 납품", body: "첫 시안을 공유하고, 수정은 2회까지 포함입니다. 최종 파일과 사용 가이드를 함께 전달해요." },
+    ],
+    hours: "운영 시간 · 평일 10:00–19:00 (점심 12:30–13:30) · 주말·공휴일 휴무",
     // 쓰지 않는 연락 수단은 value를 비워두면 화면에서 사라집니다.
     channels: [
-      { label: "이메일", value: "hello@example.com", href: "mailto:hello@example.com" },
+      // ※ 아래 연락처는 모두 가상의 샘플입니다. 실제 연락처로 교체하세요.
+      { label: "이메일", value: "hello@oneday-studio.example", href: "mailto:hello@oneday-studio.example" },
+      { label: "전화", value: "010-1234-5678", href: "tel:01012345678" },
       { label: "카카오톡 오픈채팅", value: "오픈채팅으로 문의하기", href: "https://open.kakao.com/" },
-      { label: "전화", value: "010-0000-0000", href: "tel:01000000000" },
+      { label: "인스타그램", value: "@oneday.studio", href: "https://www.instagram.com/" },
     ],
   },
 

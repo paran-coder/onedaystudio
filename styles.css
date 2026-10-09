@@ -186,9 +186,19 @@ html.is-locked { overflow: hidden; }
 .cell h3 { margin-top: 56px; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 .cell p { margin-top: 12px; font-size: 1rem; color: var(--ink-2); }
 
+/* menu guide */
+.guide { margin-top: 28px; padding: 14px 18px; display: flex; gap: 16px; align-items: baseline; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.25); font-size: 0.9375rem; color: var(--ink-2); max-width: 46em; }
+.guide__tag { flex: none; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); }
+.subhead { margin: 56px 0 0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+.cells--steps { margin-top: 16px; }
+.cells--steps .cell { min-height: 0; }
+.cells--steps .cell h3 { margin-top: 32px; }
+
 /* contact */
 .contact { min-height: 50vh; }
+.contact .list { margin-top: 56px; }
 .contact__cta { margin-top: 64px; display: flex; justify-content: flex-end; }
+.hours { margin-top: 20px; text-align: right; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
 
 .footer { border-top: 1px solid var(--line); padding: 28px 0 36px; }
 
@@ -219,6 +229,9 @@ html.is-locked { overflow: hidden; }
   .cells { margin-top: 40px; }
   .contact__cta { justify-content: stretch; }
   .contact__cta .btn { width: 100%; }
+  .hours { text-align: left; }
+  .guide { flex-direction: column; gap: 6px; }
+  .subhead { margin-top: 40px; }
 
   .modal { padding: 0; }
   .modal__panel { height: 100vh; height: 100dvh; max-height: none; border: 0; }
