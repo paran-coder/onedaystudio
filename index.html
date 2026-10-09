@@ -16,9 +16,9 @@
     <div class="wrap grid12 nav__inner">
       <a href="#top" class="nav__brand" data-text="name"></a>
       <nav class="nav__links">
-        <a href="#works">작업물</a>
-        <a href="#about">소개</a>
-        <a href="#contact">의뢰하기</a>
+        <a href="#works" class="navlink" data-spy="works"><span class="roll"><span>작업물</span><span aria-hidden="true">작업물</span></span></a>
+        <a href="#about" class="navlink" data-spy="about"><span class="roll"><span>소개</span><span aria-hidden="true">소개</span></span></a>
+        <a href="#contact" class="navlink navlink--cta" data-spy="contact"><span class="roll"><span>의뢰하기</span><span aria-hidden="true">의뢰하기</span></span></a>
       </nav>
     </div>
   </header>
@@ -43,6 +43,8 @@
         </div>
       </div>
     </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee-track"></div></div>
 
     <section id="works" class="block">
       <div class="wrap grid12">

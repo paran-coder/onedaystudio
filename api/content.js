@@ -10,7 +10,7 @@ const anyUrl = (v) => {
 const httpUrl = (v) => {
   const s = str(v, 2000);
   if (/^https?:/i.test(s)) return s;
-  return /^\/images\/[\w\-./]+$/.test(s) && !s.includes("..") ? s : "";
+  return /^\/?images\/[\w\-./]+$/.test(s) && !s.includes("..") ? s : "";
 };
 
 function clean(input) {

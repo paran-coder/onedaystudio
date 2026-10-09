@@ -22,7 +22,7 @@
   const imgUrl = (u) => {
     const s = String(u || "");
     if (/^https?:/i.test(s)) return s;
-    return /^\/images\/[\w\-./]+$/.test(s) && !s.includes("..") ? s : "";
+    return /^\/?images\/[\w\-./]+$/.test(s) && !s.includes("..") ? s : "";
   };
   const pad = (i, n) => String(i + 1).padStart(n, "0");
 
@@ -53,10 +53,16 @@
     const img = imgUrl(w.image);
     if (img) {
       const im = el("img", "item__thumb");
+      const wrap = el("span", "item__thumbwrap");
+      im.addEventListener("error", () => {
+        wrap.classList.add("is-fallback");
+        wrap.replaceChildren(el("span", null, w.category));
+      });
       im.src = img;
       im.alt = w.title;
       im.loading = "lazy";
-      item.appendChild(im);
+      wrap.appendChild(im);
+      item.appendChild(wrap);
     }
     item.appendChild(el("span", "item__arrow", "+"));
     works.appendChild(item);
@@ -85,6 +91,10 @@
       const s = el("div", "slide");
       if (imgs.length) {
         const im = document.createElement("img");
+        im.addEventListener("error", () => {
+          s.classList.add(`slide--t${n % 3}`);
+          s.replaceChildren(el("span", "slide__label", `${w.category} ${pad(n, 2)}`));
+        });
         im.src = imgs[n];
         im.alt = `${w.title} ${n + 1}`;
         im.draggable = false;
@@ -236,11 +246,13 @@
   });
 
   const steps = document.getElementById("contact-steps");
-  (S.contact.steps || []).forEach((s, i) => {
-    const cell = el("div", "cell");
-    cell.append(el("span", "cell__index", pad(i, 2)), el("h3", null, s.title), el("p", null, s.body));
-    steps.appendChild(cell);
-  });
+  if (steps) {
+    (S.contact.steps || []).forEach((s, i) => {
+      const cell = el("div", "cell");
+      cell.append(el("span", "cell__index", pad(i, 2)), el("h3", null, s.title), el("p", null, s.body));
+      steps.appendChild(cell);
+    });
+  }
 
   const channels = S.contact.channels.filter((c) => c.value && safeUrl(c.href));
   const list = document.getElementById("contact-channels");
@@ -264,4 +276,49 @@
   } else {
     cta.remove();
   }
+
+  /* ---------- 움직임 효과 ---------- */
+  const track = document.getElementById("marquee-track");
+  const words = S.marquee || [];
+  if (track && words.length) {
+    const group = () => {
+      const g = el("div", "marquee__group");
+      for (let r = 0; r < 2; r++) words.forEach((w) => g.append(el("span", "marquee__word", w), el("i", "marquee__sep")));
+      return g;
+    };
+    track.append(group(), group());
+  } else if (track) {
+    track.parentElement.remove();
+  }
+
+  const nav = document.querySelector(".nav");
+  const spyLinks = [...document.querySelectorAll("[data-spy]")];
+  let ticking = false;
+  const updateProgress = () => {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    nav.style.setProperty("--p", max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : "0");
+    if (window.scrollY < 200) spyLinks.forEach((a) => a.classList.remove("is-active"));
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }, { passive: true });
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) spyLinks.forEach((a) => a.classList.toggle("is-active", a.dataset.spy === e.target.id));
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    spyLinks.forEach((a) => {
+      const section = document.getElementById(a.dataset.spy);
+      if (section) io.observe(section);
+    });
+  }
+
 })();
