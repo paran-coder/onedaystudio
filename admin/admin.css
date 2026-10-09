@@ -1,0 +1,73 @@
+.awrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 var(--gutter); }
+.admin { font-size: 1rem; }
+.admin [hidden] { display: none !important; }
+
+.anav { position: sticky; top: 0; z-index: 20; height: 64px; background: rgba(227, 226, 222, 0.95); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.anav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.anav__brand { font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; }
+.anav__right { display: flex; align-items: center; gap: 20px; }
+
+.login { padding: 96px 0; max-width: 480px; }
+.login__title { margin-top: 16px; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; letter-spacing: -0.03em; font-weight: 800; }
+.login__form { margin-top: 32px; display: flex; gap: 8px; }
+.login__form input { flex: 1; min-width: 0; }
+.msg { margin-top: 16px; min-height: 1.5em; font-size: 0.9375rem; color: var(--ink-2); }
+.msg.is-error { color: #b3261e; }
+.msg.is-ok { color: var(--accent); }
+
+input, textarea, select {
+  width: 100%; padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.4); color: var(--ink);
+  border: 1px solid var(--line);
+  font: inherit; font-size: 1rem; line-height: 1.5;
+  transition: border-color .3s linear, background-color .3s linear;
+}
+input:focus, textarea:focus { border-color: var(--ink); background: rgba(255, 255, 255, 0.7); outline: none; }
+textarea { resize: vertical; }
+
+.savebar {
+  position: sticky; top: 64px; z-index: 15;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 0; background: var(--bg); border-bottom: 1px solid var(--line);
+}
+.savebar .msg { margin: 0; min-height: 0; }
+.savebar .btn { padding: 12px 28px; }
+.savebar.is-dirty .btn { background: var(--accent); }
+
+.ablock { padding: 48px 0 56px; border-bottom: 1px solid var(--line); }
+.ablock__title { font-size: 1.75rem; letter-spacing: -0.03em; font-weight: 700; }
+.hint { margin: 8px 0 24px; color: var(--muted); font-size: 0.9375rem; }
+.field { display: block; margin-bottom: 14px; }
+.field > span { display: block; margin-bottom: 6px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); }
+
+.channels-admin { margin: 20px 0 16px; display: grid; gap: 8px; }
+.chan { display: grid; grid-template-columns: 1fr 1.4fr 1.6fr auto; gap: 8px; align-items: start; }
+
+.rows { list-style: none; margin: 0 0 16px; padding: 0; border-top: 1px solid var(--line); }
+.row { border-bottom: 1px solid var(--line); background: transparent; transition: background-color .3s linear; }
+.row.is-over { background: rgba(19, 81, 170, 0.12); }
+.row.is-dragging { opacity: 0.4; }
+.row.is-hidden .row__title { color: var(--muted); text-decoration: line-through; }
+.row__head { display: flex; align-items: center; gap: 12px; padding: 14px 0; flex-wrap: wrap; }
+.row__handle { flex: none; width: 28px; text-align: center; font-size: 1.25rem; line-height: 1; color: var(--muted); cursor: grab; user-select: none; }
+.row__handle:active { cursor: grabbing; }
+.row__idx { flex: none; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+.row__title { flex: 1 1 200px; min-width: 0; font-weight: 700; font-size: 1.0625rem; overflow-wrap: anywhere; }
+.row__cat { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); }
+.badge { padding: 3px 8px; background: var(--ink); color: var(--bg); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; }
+.row__tools { display: flex; gap: 6px; flex-wrap: wrap; }
+.row__tools .tbtn { padding: 8px 12px; }
+.tbtn:disabled { opacity: 0.3; cursor: not-allowed; }
+.tbtn:disabled:hover { background: none; color: var(--ink); border-color: var(--line); }
+
+.row__form { padding: 4px 0 28px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.row__form .field--wide { grid-column: 1 / -1; }
+.chan .tbtn { padding: 12px 14px; }
+
+@media (max-width: 800px) {
+  .anav__right { gap: 12px; }
+  .login { padding: 56px 0; }
+  .chan { grid-template-columns: 1fr; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .row__form { padding-left: 0; grid-template-columns: 1fr; }
+  .savebar { flex-wrap: wrap; }
+}

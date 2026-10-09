@@ -28,44 +28,51 @@ window.SITE = {
   works: {
     label: "WORKS",
     title: "작업물",
-    description: "최근에 작업한 프로젝트입니다. 클릭하면 자세히 볼 수 있어요.",
+    description: "홈페이지와 발표 자료 6건. 클릭하면 화면을 넘겨보며 자세히 볼 수 있어요.",
     // 작업물을 클릭하면 팝업이 열립니다. 칸을 비워두면 그 줄은 팝업에서 사라집니다.
     //   title / category / description : 목록에 보이는 글자
-    //   image   : 목록 오른쪽에 보이는 작은 이미지 주소(URL)
-    //   images  : 팝업 갤러리에 넘겨볼 이미지 주소들. 비우면 색 블록 3장이 대신 보입니다.
+    //   image   : 목록 오른쪽에 보이는 작은 이미지 (사이트 안 이미지는 /images/파일명, 외부 이미지는 https:// 주소)
+    //   images  : 팝업 갤러리에 넘겨볼 이미지들. 비우면 색 블록 3장이 대신 보입니다.
     //   detail  : 팝업에 보이는 긴 설명 (비우면 description을 씁니다)
     //   year / role / tools : 팝업의 작업 정보
     //   link    : 팝업의 "프로젝트 보기" 버튼이 여는 주소
+    // ※ 아래 6건은 포트폴리오 구성을 보여주기 위한 가상의 샘플 작업입니다. 실제 작업으로 교체하세요.
     items: [
       {
-        title: "핀테크 스타트업 홈페이지", category: "홈페이지", description: "서비스 소개와 사전 신청 랜딩 페이지",
-        detail: "출시 전 사전 신청을 받기 위한 랜딩 페이지입니다. 서비스가 무엇인지 첫 화면에서 한 문장으로 전달하고, 신청 버튼까지 스크롤 한 번 안에 닿도록 구성했습니다.",
-        year: "2026", role: "기획 · 디자인", tools: "Figma", image: "", images: [], link: "",
+        title: "핀빗 — 앱 소개 홈페이지", category: "홈페이지", description: "소비·자산 관리 앱의 서비스 소개 사이트",
+        detail: "소비와 자산을 한곳에서 관리하는 핀테크 앱의 소개 사이트입니다. 첫 화면에서 헤드라인과 앱 화면을 한 프레임에 묶어 '무엇을 해주는 앱인지'가 3초 안에 읽히게 했고, 기능 → 요금제 → 다운로드 순으로 한 번에 읽히는 스크롤 흐름을 설계했습니다. 금융 서비스라서 색은 코발트 블루 하나로 제한해 신뢰감을 우선했습니다.",
+        year: "2024", role: "UX 설계 · 웹 디자인", tools: "Figma",
+        image: "/images/w1-1.webp", images: ["/images/w1-1.webp", "/images/w1-2.webp", "/images/w1-3.webp"], link: "",
       },
       {
-        title: "시리즈 A 투자 IR 자료", category: "PPT", description: "30장 분량 투자 유치 발표 자료",
-        detail: "투자자가 10분 안에 사업의 핵심을 이해하도록 장표 흐름부터 다시 짰습니다. 숫자는 크게, 설명은 짧게. 한 장에 하나의 메시지만 담았어요.",
-        year: "2026", role: "구성 · 디자인", tools: "PowerPoint", image: "", images: [], link: "",
+        title: "팀메이트 AI — 시리즈 A IR 자료", category: "PPT", description: "핵심 지표 중심으로 구성한 투자 유치 발표 자료",
+        detail: "투자자가 10분 안에 사업의 핵심을 이해하도록 장표 흐름부터 다시 짰습니다. 가장 중요한 지표를 첫 장에 모으고, 한 장에는 하나의 메시지만 담았어요. 차트는 강조할 막대 하나만 색을 주고 나머지는 같은 색 계열로 눌러서 시선이 숫자로 가게 했습니다.",
+        year: "2024", role: "스토리라인 · 장표 디자인", tools: "PowerPoint · Excel",
+        image: "/images/w2-1.webp", images: ["/images/w2-1.webp", "/images/w2-2.webp", "/images/w2-3.webp"], link: "",
       },
       {
-        title: "브랜드 리뉴얼 회사 소개서", category: "PPT", description: "영업용 회사 소개서 전면 개편",
-        detail: "영업팀이 메일에 첨부해 보내는 소개서를 브랜드 리뉴얼에 맞춰 전면 개편했습니다. 고객사가 가장 먼저 찾는 정보(실적, 도입 사례, 연락처)를 앞쪽으로 당겼습니다.",
-        year: "2025", role: "디자인", tools: "PowerPoint · Illustrator", image: "", images: [], link: "",
+        title: "어센드솔루션 — 회사 소개서", category: "PPT", description: "B2B 소프트웨어 기업의 영업용 소개서",
+        detail: "영업팀이 제안 메일에 첨부해 보내는 회사 소개서입니다. 고객사가 가장 먼저 찾는 정보(해결하는 문제, 도입 효과, 연혁과 사례)를 앞쪽으로 당기고, 차분한 아이보리와 딥그린 두 색으로 전문성이 느껴지는 에디토리얼 톤을 잡았습니다. 출력해도, 화면으로 넘겨도 읽히도록 여백과 글자 크기를 정했어요.",
+        year: "2024", role: "에디토리얼 디자인", tools: "PowerPoint · Illustrator",
+        image: "/images/w3-1.webp", images: ["/images/w3-1.webp", "/images/w3-2.webp", "/images/w3-3.webp"], link: "",
       },
       {
-        title: "교육 플랫폼 랜딩 페이지", category: "홈페이지", description: "강의 모집용 원페이지 사이트",
-        detail: "강의 모집 기간에 맞춰 만든 원페이지 사이트입니다. 커리큘럼, 강사 소개, 후기를 한 흐름으로 읽히게 배치하고 신청 버튼을 화면 하단에 고정했습니다.",
-        year: "2025", role: "디자인 · 퍼블리싱", tools: "Figma · HTML/CSS", image: "", images: [], link: "",
+        title: "배움의 내일 — 온라인 강의 플랫폼", category: "홈페이지", description: "수강생 모집 랜딩 페이지와 모바일 신청 흐름",
+        detail: "실무 강의를 모집하는 플랫폼의 랜딩 페이지입니다. 따뜻한 노란색과 강사 사진으로 친근함을 주되, 수강 신청 버튼과 커리큘럼은 어디서든 한 번에 닿도록 배치했어요. 신청자의 대부분이 모바일로 들어온다는 전제로 폼을 세 단계로 쪼개 입력 부담을 줄였습니다.",
+        year: "2024", role: "웹 디자인 · 퍼블리싱", tools: "Figma · HTML/CSS",
+        image: "/images/w4-1.webp", images: ["/images/w4-1.webp", "/images/w4-2.webp", "/images/w4-3.webp"], link: "",
       },
       {
-        title: "제조사 기업 홈페이지", category: "홈페이지", description: "제품 카탈로그를 포함한 기업 사이트",
-        detail: "제품이 많은 제조사를 위해 카탈로그를 중심에 둔 기업 사이트를 설계했습니다. 처음 방문한 바이어도 원하는 제품군을 세 번 클릭 안에 찾을 수 있게 했습니다.",
-        year: "2025", role: "기획 · 디자인", tools: "Figma", image: "", images: [], link: "",
+        title: "정밀산업 — 제조사 기업 홈페이지", category: "홈페이지", description: "제품 카탈로그를 중심에 둔 기업 사이트",
+        detail: "제품이 많은 정밀 부품 제조사를 위해 카탈로그를 중심에 둔 기업 사이트를 설계했습니다. 처음 방문한 바이어가 원하는 제품군을 세 번 클릭 안에 찾을 수 있도록 카테고리와 검색을 앞세웠고, 사양표와 카탈로그 다운로드 버튼을 상세 화면 어디서나 보이게 했어요. 주황 포인트 색은 '문의하기' 하나에만 씁니다.",
+        year: "2024", role: "정보 구조 설계 · 웹 디자인", tools: "Figma",
+        image: "/images/w5-1.webp", images: ["/images/w5-1.webp", "/images/w5-2.webp", "/images/w5-3.webp"], link: "",
       },
       {
-        title: "신제품 런칭 발표 자료", category: "PPT", description: "언론 발표회용 키노트",
-        detail: "언론 발표회 무대에서 쓰는 키노트입니다. 멀리서도 읽히는 큰 글자와 제품 이미지 중심으로 구성하고, 발표 흐름에 맞춘 전환 효과를 넣었습니다.",
-        year: "2024", role: "구성 · 디자인", tools: "Keynote", image: "", images: [], link: "",
+        title: "몰입 헤드폰 — 신제품 런칭 키노트", category: "PPT", description: "무대에서 읽히는 큰 글자 중심의 발표 자료",
+        detail: "언론 발표회 무대에서 쓰는 신제품 런칭 키노트입니다. 객석 뒤에서도 읽히도록 헤드라인을 아주 크게 잡고, 검은 배경 위에 제품 하나만 남겨 시선을 모았습니다. 기능 소개, 사양 비교, 가격과 출시일까지 발표 순서에 맞춰 장표를 이어 붙였어요.",
+        year: "2024", role: "구성 · 디자인", tools: "Keynote",
+        image: "/images/w6-1.webp", images: ["/images/w6-1.webp", "/images/w6-2.webp", "/images/w6-3.webp"], link: "",
       },
     ],
   },

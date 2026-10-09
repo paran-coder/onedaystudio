@@ -105,7 +105,9 @@ h1, h2, h3, p { margin: 0; }
 .item__meta { flex: none; width: 260px; padding-top: 0.6rem; display: flex; flex-direction: column; gap: 6px; }
 .item__cat { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
 .item__desc { font-size: 0.9375rem; color: var(--ink-2); line-height: 1.45; }
-.item__thumb { flex: none; width: 120px; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.item__thumb { flex: none; width: 200px; aspect-ratio: 4 / 3; object-fit: cover; display: block; border: 1px solid var(--line); }
+.item--work { align-items: center; }
+.item--work .item__index, .item--work .item__meta, .item--work .item__arrow { padding-top: 0; }
 .item__arrow { flex: none; padding-top: 0.5rem; font-size: 1.5rem; line-height: 1; color: var(--muted); transition: color .3s linear; }
 .item:hover .item__title, .item:hover .item__arrow { color: var(--accent); }
 button.item { width: 100%; margin: 0; background: none; border: 0; border-top: 1px solid var(--line); font: inherit; color: inherit; text-align: left; cursor: pointer; }

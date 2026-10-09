@@ -1,6 +1,17 @@
-(function () {
+(async function () {
   const S = window.SITE;
-  const get = (path) => path.split(".").reduce((o, k) => (o ? o[k] : undefined), S);
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 2500);
+    const res = await fetch("/api/content", { signal: ctrl.signal, cache: "no-store" });
+    clearTimeout(timer);
+    if (res.ok) window.mergeContent(S, await res.json());
+  } catch (e) {
+    // 저장소에 연결되지 않으면 content.js의 기본 내용을 그대로 보여줍니다.
+  }
+  S.works.items = S.works.items.filter((w) => !w.hidden);
+
+  const get =(path) => path.split(".").reduce((o, k) => (o ? o[k] : undefined), S);
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -8,6 +19,11 @@
     return n;
   };
   const safeUrl = (u) => (/^(https?:|mailto:|tel:)/i.test(u || "") ? u : "");
+  const imgUrl = (u) => {
+    const s = String(u || "");
+    if (/^https?:/i.test(s)) return s;
+    return /^\/images\/[\w\-./]+$/.test(s) && !s.includes("..") ? s : "";
+  };
   const pad = (i, n) => String(i + 1).padStart(n, "0");
 
   document.querySelectorAll("[data-text]").forEach((n) => {
@@ -34,7 +50,7 @@
     const meta = el("div", "item__meta");
     meta.append(el("span", "item__cat", w.category), el("span", "item__desc", w.description));
     item.append(el("span", "item__index", pad(i, 3)), el("span", "item__title", w.title), meta);
-    const img = safeUrl(w.image);
+    const img = imgUrl(w.image);
     if (img) {
       const im = el("img", "item__thumb");
       im.src = img;
@@ -63,7 +79,7 @@
     const thumbs = $("thumbs");
     track.replaceChildren();
     thumbs.replaceChildren();
-    const imgs = (w.images || []).map(safeUrl).filter(Boolean);
+    const imgs = (w.images || []).map(imgUrl).filter(Boolean);
     slideCount = imgs.length || 3;
     for (let n = 0; n < slideCount; n++) {
       const s = el("div", "slide");
